@@ -1,4 +1,4 @@
-const products = [
+export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
     image: "images/products/athletic-cotton-socks-6-pairs.jpg",
@@ -663,7 +663,7 @@ const products = [
     name: "Black Backpack",
     rating: {
       stars: 5.0,
-      count: 4032
+      count: 4032 
     },
     priceCents: 2004,
     keywords: [ 
