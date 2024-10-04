@@ -36,9 +36,11 @@ cart.forEach((cartItem) => {
           <div class="product-price">$${formatCurrency(matchingProduct.priceCents)}</div>
           <div class="product-quantity">
             <span> Quantity: <span class="quantity-label">${cartItem.quantity}</span> </span>
-            <span class="update-quantity-link link-primary">
+            <span class="update-quantity-link link-primary    js-update-link" data-product-id="${matchingProduct.id}">
               Update
             </span>
+            <input class="quantity-input" />
+            <span class="link-primary save-quantity-link">Save</span>
             <span class="delete-quantity-link link-primary js-delete-link" data-product-id="${matchingProduct.id}">
               Delete
             </span>
@@ -111,4 +113,30 @@ function updateCartQuantity() {
   document.querySelector('.js-return-to-home-link').innerHTML = `${cartQuantity} items`
 }
 
-//document.querySelector('.js-return-home-link').innerHTML;
+document.querySelectorAll('.js-update-link').forEach((link) => {
+  link.addEventListener('click', () => {
+    const { productId } = link.dataset;
+
+    const container = document.querySelector(`.js-cart-item-container-${productId}`);
+
+    container.classList.add('is-editing-quantity');
+
+    // const quantityLabel = document.querySelector(`.js-cart-item-container-${productId} .quantity-label`);
+    // const quantity = Number(quantityLabel.innerHTML);
+
+    // const newQuantity = prompt('Enter new quantity:', quantity);
+
+    // if (newQuantity === null) {
+    //   return;
+    // }
+
+    // const newQuantityNumber = Number(newQuantity);
+
+    // if (isNaN(newQuantityNumber) || newQuantityNumber < 1) {
+    //   alert('Please enter a valid quantity.');
+    //   return;
+    // }
+
+    // quantityLabel.innerHTML = newQuantityNumber;
+  });
+});
